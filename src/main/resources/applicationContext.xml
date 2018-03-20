@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd 
+						http://www.springframework.org/schema/jee 
+						http://www.springframework.org/schema/jee/spring-jee.xsd
+						http://www.springframework.org/schema/mvc 						
+        					http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        					http://www.springframework.org/schema/tx
+        					http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<context:component-scan base-package="org.oshopadma" />
+<context:annotation-config />
+	<context:property-placeholder location="classpath:service.properties,classpath:jdbc.properties"/>
+
+<mvc:annotation-driven />
+<mvc:resources mapping="/**" location="/" />
+<mvc:interceptors>
+	<bean class="org.oshopadma.customer.interceptors.UserAuthenticationInterceptor"></bean>
+</mvc:interceptors>
+	
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.databaseurl}" /> 
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+</bean>	
+
+<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+<property name="dataSource" ref="dataSource"></property>
+<property name="annotatedClasses">
+	<list>
+		<value>org.oshopadma.customer.model.User</value>
+	</list>
+</property>
+	<property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${jdbc.dialect}</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+</bean>
+
+<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+<!--<mvc:resources mapping="/media/**" location="/Users/permi/Documents/media" 
+                                order="0"/>
+	  <mvc:resources mapping="/media/**"
+		location="file:///C:/FreshDirect/content/media/" order="0" />  -->
+
+
+</beans>

@@ -1,0 +1,101 @@
+
+<html ng-app='myApp'>
+<head>
+<script src="lib/angular.min.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/tether.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link type="text/css" rel="stylesheet" href="css/oshopadma.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<title>Osho Padma Meditation Center</title>
+</head>
+<body>
+	<br>
+	<div class='container'>
+	<div class='text-right login_register' ng-controller="HelloController">
+		<button type='button' data-toggle='modal' data-target='#loginModal'>login/register</button>
+		<osho-padma-modal></osho-padma-modal>
+	</div>
+	</div>
+	<br>
+	<div class='text-center'>
+		<h1>
+			<em>Osho Padma Meditation Center</em>
+		</h1>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class='container-fluid'>
+		<div class='row content'>
+			<div class='col-sm-3 col-md-3 sidenav'>
+				<h3 class='text-center text-primary bg-warning'>Services Offered</h3>
+				<br>
+				<nav class='nav nav-justified d-flex flex-column'>
+					<h5><a class='p-3 nav-link' href='#'>Massage</a></h5>
+					<h5><a class='p-3 nav-link' href='#'>Life Alignment</a></h5>
+				</nav>				
+			</div>
+
+
+			<div class='col-sm-1 col-md-1 text-center'></div>
+			<div class='col-sm-1 col-md-1 text-center main_page'>
+			<div class="dropdown">
+ 				 <a class='droplink' href='#'>Home</a>
+  				    <div class="dropdown-content">
+						<a href="#">about</a>
+					</div>
+				</div>
+			</div>
+			<div class='col-sm-1 col-md-1 text-center'>
+				<div class="dropdown">
+ 				 <a class='droplink' href='#'>OSHO</a>
+				</div>
+			</div>
+			<div class='col-sm-1 col-md-1 text-center'>
+				<div class="dropdown">
+ 				 <a class='droplink' href='#'>Meditations</a>
+  				    <div class="dropdown-content text-left">
+						<a href="#">Dynamic</a>
+						<a href="#">Kundalini</a>
+						<a href="#">Natraj</a>
+						<a href="#">Nadabrahma</a>
+						<a href="#">Mandala</a>
+						<a href="#">No Dimension</a>
+						<a href="#">Gourishankar</a>
+					</div>
+				</div>
+			</div>
+			<div class='col-sm-2 col-md-2 text-center'>
+				<div class="dropdown">
+ 				 <a class='droplink' href='#'>What's Happening</a>
+  				
+				</div>
+			</div>
+			<div class='col-sm-1 col-md-1 text-center'>
+				<div class="dropdown">
+ 				 <a class='droplink' href='#'>Reflections</a>
+  				    <div class="dropdown-content">
+						<a href="#">Gallery</a>
+						<a href="#">Musings</a>
+					</div>
+				</div>
+			</div>
+			<div class='col-sm-2 col-md-2 text-center'>
+				<div class="dropdown">
+ 				 <a class='droplink' href='#'>Special Events 2017</a>
+  				    <div class="dropdown-content">
+						<a href="#">Past Events</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
